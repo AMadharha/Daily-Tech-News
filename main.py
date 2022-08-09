@@ -25,4 +25,4 @@ reddit = praw.Reddit(client_id = "lzGC0n5GmClEoK_gdSitAA",
 subreddit = reddit.subreddit("technews")
 top = subreddit.top(time_filter = "day", limit = 1)
 for post in top:
-    api.update_status("#DTN\n{" + post.title + "}\n" + post.url)
+    api.update_status("#DTN\n[" + post.title + "]\n" + post.url)
