@@ -1,6 +1,4 @@
 import tweepy
-import praw
-import config
 import authentication
 
 # Twitter Authentication
