@@ -16,8 +16,12 @@ top = subreddit.top(time_filter = "day", limit = 1)
 # Keywords
 for post in top:
     article = keywords.get_article(post.url)
+keyword_list = keywords.get_keywords(post.title + ", " + article)
 
-
+# Create Tweet
+for kw in keyword_list:
+    print("temp")
+tweet = "#DTN #DailyTechNews\n[" + post.title + "]\n" + "" + post.url
 # Tweet Code
 #for post in top:
     #api.update_status("#DTN\n[" + post.title + "]\n" + post.url)
