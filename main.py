@@ -1,14 +1,15 @@
 import tweepy
 import authentication
+from bs4 import BeautifulSoup
 
 # Twitter Authentication
 auth = authentication.authTwitter()
+api = tweepy.API(auth, wait_on_rate_limit=True)
 
 # Reddit Authentication
 reddit = authentication.authReddit()
 
 # Tweet Code
-api = tweepy.API(auth, wait_on_rate_limit=True)
 subreddit = reddit.subreddit("technews+apple+technology")
 top = subreddit.top(time_filter = "day", limit = 1)
 for post in top:
