@@ -1,6 +1,6 @@
 import tweepy
 import authentication
-from bs4 import BeautifulSoup
+import keywords
 
 # Twitter Authentication
 auth = authentication.authTwitter()
@@ -9,8 +9,15 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 # Reddit Authentication
 reddit = authentication.authReddit()
 
-# Tweet Code
+# Get top reddit post
 subreddit = reddit.subreddit("technews+apple+technology")
 top = subreddit.top(time_filter = "day", limit = 1)
+
+# Keywords
 for post in top:
-    api.update_status("#DTN\n[" + post.title + "]\n" + post.url)
+    article = keywords.get_article(post.url)
+
+
+# Tweet Code
+#for post in top:
+    #api.update_status("#DTN\n[" + post.title + "]\n" + post.url)

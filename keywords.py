@@ -1,14 +1,13 @@
 import requests
 import pandas as pd
 from bs4 import BeautifulSoup
+from urllib.request import Request, urlopen
 
-def keywords():
-    def getdata(url):
-        r = requests.get(url)
-        return r.text
-    
-    htmldata = getdata("https://www.newsweek.com/ceos-linkedin-crying-selfie-about-layoffs-backlash-1732677")
-    soup = BeautifulSoup(htmldata, "html.parser")
-    data = ""
-    for data in soup.find_all("p"):
-        print(data.get_text())
+def get_article(url):
+    req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    html = urlopen(req).read()
+    htmlparse = BeautifulSoup(html, 'html.parser')
+    article = ""
+    for para in htmlparse.find_all("p"):
+        article += para.get_text()
+    return article
