@@ -12,3 +12,4 @@ def authReddit():
                      username = "DailyTechNewsTweet",
                      password = config.PASSWORD,
                      user_agent = "DailyTechNews")
+    return reddit
