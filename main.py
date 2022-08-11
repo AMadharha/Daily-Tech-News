@@ -1,13 +1,13 @@
 import tweepy
 import praw
 import config
-import auth
+import authentication
 
 # Twitter Authentication
-auth.authTwitter()
+auth = authentication.authTwitter()
 
 # Reddit Authentication
-reddit = auth.authReddit()
+reddit = authentication.authReddit()
 
 # Tweet Code
 api = tweepy.API(auth, wait_on_rate_limit=True)
