@@ -10,21 +10,14 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 reddit = authentication.authReddit()
 
 # Get top reddit post
-#subreddit = reddit.subreddit("technews+apple+technology")
-subreddit = reddit.subreddit("askreddit")
+subreddit = reddit.subreddit("apple+technology")
 top = subreddit.top(time_filter = "day", limit = 1)
-
-# Verify post has a url
-substring = "www.reddit.com"
-for post in top:
-    if substring in post.url:
-        subreddit = reddit.subreddit("technews")
-        top = subreddit.top(time_filter="day", limit = 1)
 
 # Get keywords list
 for post in top:
     article = keywords.get_article(post.url)
 keyword_list = keywords.get_keywords(post.title + ", " + article)
+print(article)
 
 # Create Tweet
 hashtags = ""
@@ -33,8 +26,8 @@ for kw in keyword_list:
 tweet = "#DTN #DailyTechNews\n[" + post.title + "]\n" + hashtags + "\n" + post.url
 
 # Tweet 
-api.update_status(tweet)
+#api.update_status(tweet)
 
 # Like own recent tweet
-status = api.user_timeline(screen_name="DailyTechnoNews", count=1)
-api.create_favorite(status[0].id)
+#status = api.user_timeline(screen_name="DailyTechnoNews", count=1)
+#api.create_favorite(status[0].id)

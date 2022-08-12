@@ -4,7 +4,10 @@ import yake
 
 def get_article(url):
     req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-    html = urlopen(req).read()
+    try:
+        html = urlopen(req).read()
+    except:
+        return ""
     htmlparse = BeautifulSoup(html, 'html.parser')
     article = ""
     for para in htmlparse.find_all("p"):
