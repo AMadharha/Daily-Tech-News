@@ -9,7 +9,7 @@ This is a simple python script that uses tweepy and praw to interact with the tw
 
 If the bot has already tweeted out the top post from these subs, or the top post does not contain a url, it will take the top post from [r/technews](https://www.reddit.com/r/technews/).
 
-The bot will tweet out the title of the post and the associated article link. It will also find 5 keywords in the article to use as hashtags within the tweet. It will post everyday at 9AM EST.
+The bot will tweet out the title of the post and the associated article link. It will also find 5 keywords in the article to use as hashtags within the tweet. It will post everyday at 9AM EST and 6PM EST.
 
 Twitter: https://twitter.com/DailyTechnoNews
 
