@@ -7,7 +7,7 @@
     <li>r/apple</li>
     <li>r/technology</li>
   </ul>   
-  The bot will tweet out the title of the post and the associated article link. It will also generate 5 hashtags relating to the article (included in the tweet) and generate 5 hashtags relating to the article. It will post everyday at 9AM EST.
+  The bot will tweet out the title of the post and the associated article link. It will also find 5 keywords in the article to use as hashtags within the tweet. It will post everyday at 9AM EST.
   <br>
   <br>
   Twitter: https://twitter.com/DailyTechnoNews
