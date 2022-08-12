@@ -1,7 +1,5 @@
 # Daily-Tech-News
 
-[![Python Versions](https://img.shields.io/pypi/pyversions/tweepy?label=Python)](https://pypi.org/project/tweepy/)
-
 <h2>Project Description</h2>
 <p>
   This is a simple python script that uses tweepy and praw to interact with the twitter and reddit API's respectively. It takes the top post of today off the following subreddits, depending on which post is most popular:
