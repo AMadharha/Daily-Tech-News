@@ -25,4 +25,5 @@ for kw in keyword_list:
 tweet = "#DTN #DailyTechNews\n[" + post.title + "]\n" + hashtags + "\n" + post.url
 
 # Tweet Code
-api.update_status(tweet)
+#api.update_status(tweet)
+print(tweet)
