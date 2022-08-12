@@ -1,5 +1,7 @@
 # Daily-Tech-News
 
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white&style=flat-square)](https://www.linkedin.com/in/ankushmadharha/)
+
 ## Project Description
 This is a simple python script that uses tweepy and praw to interact with the twitter and reddit API's respectively. It takes the top post of today off the following subreddits, depending on which post is most popular:
 - [r/apple](https://www.reddit.com/r/apple/)
