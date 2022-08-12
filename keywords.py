@@ -14,19 +14,12 @@ def get_article(url):
     return article
 
 def get_keywords(article):
-    language = "en"
-    max_ngram_size = 1
-    deduplication_thresold = 0.9
-    deduplication_algo = 'seqm'
-    windowSize = 1
-    numOfKeywords = 10
-
-    kw_extractor = yake.KeywordExtractor(lan=language, 
-                                         n=max_ngram_size, 
-                                         dedupLim=deduplication_thresold, 
-                                         dedupFunc=deduplication_algo, 
-                                         windowsSize=windowSize, 
-                                         top=numOfKeywords, 
+    kw_extractor = yake.KeywordExtractor(lan="en", 
+                                         n=1, 
+                                         dedupLim=0.9, 
+                                         dedupFunc="seqm", 
+                                         windowsSize=1, 
+                                         top=5, 
                                          features=None)
     keywords = kw_extractor.extract_keywords(article)
 

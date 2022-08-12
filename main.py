@@ -13,15 +13,18 @@ reddit = authentication.authReddit()
 subreddit = reddit.subreddit("technews+apple+technology")
 top = subreddit.top(time_filter = "day", limit = 1)
 
-# Keywords
+# Get keywords list
 for post in top:
     article = keywords.get_article(post.url)
 keyword_list = keywords.get_keywords(post.title + ", " + article)
 
 # Create Tweet
+hashtags = ""
 for kw in keyword_list:
-    print("temp")
-tweet = "#DTN #DailyTechNews\n[" + post.title + "]\n" + "" + post.url
+    hashtags += "#" + kw + " "
+tweet = "#DTN #DailyTechNews\n[" + post.title + "]\n" + hashtags + "\n" + post.url
+
 # Tweet Code
-#for post in top:
+for post in top:
+    print("#DTN #DailyTechNews\n[" + post.title + "]\n" + post.url)
     #api.update_status("#DTN\n[" + post.title + "]\n" + post.url)
