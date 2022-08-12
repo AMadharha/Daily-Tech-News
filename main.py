@@ -24,6 +24,9 @@ for kw in keyword_list:
     hashtags += "#" + kw + " "
 tweet = "#DTN #DailyTechNews\n[" + post.title + "]\n" + hashtags + "\n" + post.url
 
-# Tweet Code
-#api.update_status(tweet)
-print(tweet)
+# Tweet 
+api.update_status(tweet)
+
+# Like own recent tweet
+status = api.user_timeline(screen_name="DailyTechnoNews", count=1)
+api.create_favorite(status[0].id)
