@@ -3,13 +3,14 @@ import praw
 import config
 from boto.s3.connection import S3Connection
 import os
+from decouple import config
 
-s3 = S3Connection(os.environ["API_KEY"], 
-                  os.environ["API_KEY_SECRET"],
-                  os.environ["ACCESS_TOKEN"],
-                  os.environ["ACCESS_TOKEN_SECRET"],
-                  os.environ["CLIENT_SECRET"],
-                  os.environ["PASSWORD"])
+s3 = S3Connection(config("API_KEY"), 
+                  config("API_KEY_SECRET"),
+                  config("ACCESS_TOKEN"),
+                  config("ACCESS_TOKEN_SECRET"),
+                  config("CLIENT_SECRET"),
+                  config("PASSWORD"))
 
 # Twitter authentication
 def authTwitter():
