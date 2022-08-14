@@ -3,6 +3,7 @@ import praw
 from boto.s3.connection import S3Connection
 import os
 
+# Environment Variables
 s3 = S3Connection(os.environ["API_KEY"], 
                   os.environ["API_KEY_SECRET"],
                   os.environ["ACCESS_TOKEN"],
