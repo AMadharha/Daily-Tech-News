@@ -20,13 +20,13 @@ def get_keywords(article):
                                          dedupLim=0.9, 
                                          dedupFunc="seqm", 
                                          windowsSize=1, 
-                                         top=5, 
+                                         top=7, 
                                          features=None)
     keywords = kw_extractor.extract_keywords(article)
 
     keyword_list = []
     for kw in keywords:
-        keyword_list.append(kw[0])
-    
+        if kw.isalnum():
+            keyword_list.append(kw[0])
     return keyword_list
 
