@@ -1,6 +1,6 @@
 import tweepy
 import authentication
-import keywords
+import info
 
 # Twitter Authentication
 auth = authentication.authTwitter()
@@ -10,12 +10,12 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 reddit = authentication.authReddit()
 
 # Get top reddit post that contain a URL
-subreddit = reddit.subreddit("apple+technology+technews")
-submission = keywords.get_top_post(subreddit, api)
+subreddit = reddit.subreddit("technology")
+submission = info.get_post(subreddit, api)
 
 # Get keywords list
-article = keywords.get_article(submission.url)
-keyword_list = keywords.get_keywords(submission.title + ", " + article)
+article = info.get_article(submission.url)
+keyword_list = info.get_keywords(submission.title + ", " + article)
 
 # Create Tweet
 hashtags = ""

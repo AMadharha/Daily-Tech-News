@@ -31,16 +31,11 @@ def get_keywords(article):
             keyword_list.append(kw[0])
     return keyword_list
 
-def get_top_post(subreddit, api):
-    status = api.user_timeline(screen_name="DailyTechnoNews", count=1)
-    top = subreddit.top(time_filter = "day", limit = 10)
-    recent_tweet_title = status[0].text[status[0].text.find("[")+1:status[0].text.find("]")]
-    if(status):
-        for submission in top:
-            if(recent_tweet_title == submission.title) or ("www.reddit.com" in submission.url):
-                continue
-            else:
-                return submission
-    else:
-        for submission in top:
-            return submission
+def get_post(subreddit, api):
+    status = api.user_timeline(screen_name="DailyTechnoNews")
+    top = subreddit.top(time_filter = "day", limit = 24)
+
+    
+
+
+
