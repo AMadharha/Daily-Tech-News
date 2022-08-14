@@ -26,7 +26,7 @@ def get_keywords(article):
 
     keyword_list = []
     for kw in keywords:
-        if kw.isalnum():
+        if kw[0].isalnum():
             keyword_list.append(kw[0])
     return keyword_list
 
