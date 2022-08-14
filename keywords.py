@@ -38,7 +38,7 @@ def get_top_post(subreddit, api):
     if(status):
         for submission in top:
             if(recent_tweet_title == submission.title) or ("www.reddit.com" in submission.url):
-                next()
+                continue
             else:
                 return submission
     else:
