@@ -37,16 +37,19 @@ def get_post(subreddit, api):
     submission = next(top)
     
     #(tweet_text in submission.title) or ("reddit.com" in submission.url)
-    tweet_text = (tweet_list[0].text[tweet_list[0].text.find("[")+1:tweet_list[0].text.find("]")]).split("… https:")[0]
-    while True:   
-        valid = True
-        for tweet in tweet_list:
-            tweet_text = (tweet.text[tweet.text.find("[")+1:tweet.text.find("]")]).split("… https:")[0]
-            if (tweet_text in submission.title) or ("reddit.com" in submission.url):
-                submission = next(top)
-                valid = False
+    if(tweet_list):
+        tweet_text = (tweet_list[0].text[tweet_list[0].text.find("[")+1:tweet_list[0].text.find("]")]).split("… https:")[0]
+        while True:   
+            valid = True
+            for tweet in tweet_list:
+                tweet_text = (tweet.text[tweet.text.find("[")+1:tweet.text.find("]")]).split("… https:")[0]
+                if (tweet_text in submission.title) or ("reddit.com" in submission.url):
+                    submission = next(top)
+                    valid = False
+                    break
+            if(valid):
                 break
-        if(valid):
-            break
+    else:
+        return submission
         
     return submission
