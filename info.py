@@ -36,7 +36,6 @@ def get_post(subreddit, api):
     
     submission = next(top)
     
-    #(tweet_text in submission.title) or ("reddit.com" in submission.url)
     if(tweet_list):
         tweet_text = (tweet_list[0].text[tweet_list[0].text.find("[")+1:tweet_list[0].text.find("]")]).split("… https:")[0]
         while True:   
