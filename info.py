@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
 import yake
-import praw
 
 def get_article(url):
     req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
