@@ -29,4 +29,3 @@ api.update_status(tweet)
 # Like own recent tweet
 status = api.user_timeline(screen_name="DailyTechnoNews", count=1)
 api.create_favorite(status[0].id)
-
