@@ -1,7 +1,6 @@
 import tweepy
 import Authentication
 import Info
-import Reply
 
 # Twitter Authentication
 auth = Authentication.authTwitter()
@@ -34,10 +33,3 @@ api.update_status(tweet)
 # Like own recent tweet
 status = api.user_timeline(screen_name="DailyTechnoNews", count=1)
 api.create_favorite(status[0].id)
-
-# Reply to popular tech people's most recent tweet
-Reply.reply_to_user(api, "elonmusk")
-Reply.reply_to_user(api, "sundarpichai")
-Reply.reply_to_user(api, "satyanadella")
-Reply.reply_to_user(api, "tim_cook")
-Reply.reply_to_user(api, "MKBHD")
