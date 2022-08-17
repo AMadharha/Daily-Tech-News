@@ -5,7 +5,7 @@ from essential_generators import DocumentGenerator
 
 def reply_to_user(api, user):
     status = api.user_timeline(screen_name=user, count=1, exclude_replies=True)
-    keywords = Info.get_keywords(status[0].text, 1)
+    keywords = Info.get_keywords(status[0].text, 3)
     gen = DocumentGenerator()
 
     if not keywords:
@@ -13,7 +13,7 @@ def reply_to_user(api, user):
 
     while True:
         reply = gen.gen_sentence(min_words=10, max_words=20)
-        if keywords[0] in reply:
+        if (keywords[0] or keywords[1] or keywords[2]) in reply:
             break
 
     api.update_status(status="@" + user + " " + reply, in_reply_to_status_id=status[0].id)
