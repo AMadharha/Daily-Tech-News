@@ -14,13 +14,13 @@ def get_article(url):
         article += para.get_text()
     return article
 
-def get_keywords(article):
+def get_keywords(article, num):
     kw_extractor = yake.KeywordExtractor(lan="en", 
                                          n=1, 
                                          dedupLim=0.9, 
                                          dedupFunc="seqm", 
                                          windowsSize=1, 
-                                         top=7, 
+                                         top=num, 
                                          features=None)
     keywords = kw_extractor.extract_keywords(article)
 
