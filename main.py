@@ -28,8 +28,8 @@ for kw in keyword_list:
 tweet = "#DTN #DailyTechNews\n[" + title + "]\n" + hashtags + "\n" + submission.url
 
 # Tweet 
-api.update_status(tweet)
+#api.update_status(tweet)
 
 # Like own recent tweet
-status = api.user_timeline(screen_name="DailyTechnoNews", count=1)
-api.create_favorite(status[0].id)
+#status = api.user_timeline(screen_name="DailyTechnoNews", count=1)
+#api.create_favorite(status[0].id)
