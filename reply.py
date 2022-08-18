@@ -8,8 +8,8 @@ def reply_to_user(user, subreddit):
     reddit = Authentication.authReddit()
 
     subreddit = reddit.subreddit(subreddit)
-    top_list_generator = subreddit.top(time_filter="day", limit=1)
-    submission = next(top_list_generator)
+    hot_list_generator = subreddit.hot(limit=1)
+    submission = next(hot_list_generator)
     top_score = 0
     for top_level_comment in submission.comments:
         if isinstance(top_level_comment, MoreComments):
@@ -27,7 +27,9 @@ def reply_to_user(user, subreddit):
     status = api.user_timeline(screen_name="DailyTechnoNews")
     api.create_favorite(status[0].id) 
 
-#reply_to_user("elonmusk", "teslamotors")
-#reply_to_user("sundarpichai", "google")
-#reply_to_user("tim_cook", "apple")
+reply_to_user("elonmusk", "teslamotors")
+reply_to_user("sundarpichai", "google")
+reply_to_user("tim_cook", "apple")
 reply_to_user("REALMizkif", "Mizkif")
+reply_to_user("nmplol", "Nmpx")
+reply_to_user("Erobb221", "Emoney")
