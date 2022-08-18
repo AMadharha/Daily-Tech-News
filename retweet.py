@@ -10,4 +10,7 @@ search_results = api.search_tweets(q="technology",
                                    count=1)
 
 result = search_results[0]
-api.retweet(id=result.id)
+try:
+    api.retweet(id=result.id)
+except:
+    quit()

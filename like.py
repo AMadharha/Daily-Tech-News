@@ -10,4 +10,7 @@ search_results = api.search_tweets(q="science",
                                    count=1)
 
 result = search_results[0]
-api.create_favorite(id=result.id)
+try:
+    api.create_favorite(id=result.id)
+except:
+    quit()
