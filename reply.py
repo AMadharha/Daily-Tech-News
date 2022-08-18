@@ -8,9 +8,10 @@ def reply_to_user(user, subreddit):
     reddit = Authentication.authReddit()
 
     subreddit = reddit.subreddit(subreddit)
-    hot_list_generator = subreddit.hot(limit=1)
-    submission = next(hot_list_generator)
-    top_score = 0
+    top_list_generator = subreddit.top(time_filter="day", limit=1)
+    submission = next(top_list_generator)
+    top_score = -10000
+    top_comment = ""
     for top_level_comment in submission.comments:
         if isinstance(top_level_comment, MoreComments):
             continue
@@ -32,4 +33,4 @@ reply_to_user("sundarpichai", "google")
 reply_to_user("tim_cook", "apple")
 reply_to_user("REALMizkif", "Mizkif")
 reply_to_user("nmplol", "Nmpx")
-reply_to_user("Erobb221", "Emoney")
+reply_to_user("pokelawls", "pokelawls")
