@@ -2,6 +2,24 @@ import tweepy
 import Authentication
 import Info
 
+def generate_tweet(subreddit):
+    submission = Info.get_post(subreddit, api)
+    if len(submission.title) > 150:
+        title = submission.title[0:150] + "..."
+    else:
+        title = submission.title
+
+    # Get keywords list
+    article = Info.get_article(submission.url)
+    keyword_list = Info.get_keywords(submission.title + ", " + article, 7)
+
+    # Create Tweet
+    hashtags = ""
+    for kw in keyword_list:
+        hashtags += "#" + kw + " "
+    tweet = "#DTN #DailyTechNews\n[" + title + "]\n" + hashtags + "\n" + submission.url
+    return tweet
+
 # Twitter Authentication
 auth = Authentication.authTwitter()
 api = tweepy.API(auth, wait_on_rate_limit=True)
@@ -9,23 +27,9 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 # Reddit Authentication
 reddit = Authentication.authReddit()
 
-# Get top reddit post that contain a URL
+# Create tweet
 subreddit = reddit.subreddit("technology")
-submission = Info.get_post(subreddit, api)
-if len(submission.title) > 150:
-    title = submission.title[0:150] + "..."
-else:
-    title = submission.title
-
-# Get keywords list
-article = Info.get_article(submission.url)
-keyword_list = Info.get_keywords(submission.title + ", " + article, 7)
-
-# Create Tweet
-hashtags = ""
-for kw in keyword_list:
-    hashtags += "#" + kw + " "
-tweet = "#DTN #DailyTechNews\n[" + title + "]\n" + hashtags + "\n" + submission.url
+tweet = generate_tweet(subreddit)
 
 # Tweet 
 api.update_status(tweet)

@@ -1,31 +1,32 @@
-import Info
-import Authentication
 import tweepy
-from essential_generators import DocumentGenerator
+import Authentication
+from praw.models import MoreComments
 
-def reply_to_user(api, user):
+def reply_to_user(user, subreddit):
+    auth = Authentication.authTwitter()
+    api = tweepy.API(auth, wait_on_rate_limit=True)
+    reddit = Authentication.authReddit()
+
+    subreddit = reddit.subreddit(subreddit)
+    top_list_generator = subreddit.top(time_filter="day", limit=1)
+    submission = next(top_list_generator)
+    top_score = 0
+    for top_level_comment in submission.comments:
+        if isinstance(top_level_comment, MoreComments):
+            continue
+        if top_level_comment.score > top_score:
+            top_comment = top_level_comment.body
+            top_score = top_level_comment.score
+
+    if len(top_comment) > 275:
+        top_comment = top_comment[0:150] + "..."
+
     status = api.user_timeline(screen_name=user, count=1, exclude_replies=True)
-    keywords = Info.get_keywords(status[0].text, 3)
-    gen = DocumentGenerator()
+    api.update_status(status="@" + user + " " + top_comment, in_reply_to_status_id=status[0].id)
 
-    if not keywords:
-        return
+    status = api.user_timeline(screen_name="DailyTechnoNews")
+    api.create_favorite(status[0].id) 
 
-    while True:
-        reply = gen.gen_sentence(min_words=10, max_words=20)
-        if (keywords[0] or keywords[1] or keywords[2]) in reply:
-            break
-
-    api.update_status(status="@" + user + " " + reply, in_reply_to_status_id=status[0].id)
-
-    status = api.user_timeline(screen_name="DailyTechnoNews", count=1)
-    api.create_favorite(status[0].id)   
-
-auth = Authentication.authTwitter()
-api = tweepy.API(auth, wait_on_rate_limit=True)
-
-reply_to_user(api, "elonmusk")
-reply_to_user(api, "sundarpichai")
-reply_to_user(api, "satyanadella")
-reply_to_user(api, "tim_cook")
-reply_to_user(api, "MKBHD")
+reply_to_user("elonmusk", "teslamotors")
+reply_to_user("sundarpichai", "google")
+reply_to_user("tim_cook", "apple")
