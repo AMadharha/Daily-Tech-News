@@ -27,6 +27,7 @@ def reply_to_user(user, subreddit):
     status = api.user_timeline(screen_name="DailyTechnoNews")
     api.create_favorite(status[0].id) 
 
-reply_to_user("elonmusk", "teslamotors")
-reply_to_user("sundarpichai", "google")
-reply_to_user("tim_cook", "apple")
+#reply_to_user("elonmusk", "teslamotors")
+#reply_to_user("sundarpichai", "google")
+#reply_to_user("tim_cook", "apple")
+reply_to_user("REALMizkif", "Mizkif")
