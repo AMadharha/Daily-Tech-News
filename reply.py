@@ -20,12 +20,11 @@ def reply_to_user(user, subreddit):
             top_comment = top_level_comment.body
             top_score = top_level_comment.score
 
-    status = api.user_timeline(screen_name=user, count=1, exclude_replies=True)
+    status = api.user_timeline(screen_name=user, count=1, exclude_replies=True, include_rts=False)
     api.update_status(status="@" + user + " " + top_comment, in_reply_to_status_id=status[0].id)
 
     status = api.user_timeline(screen_name="DailyTechnoNews")
     api.create_favorite(status[0].id) 
 
 reply_to_user("elonmusk", "teslamotors")
-reply_to_user("Google", "google")
-reply_to_user("Apple", "apple")
+reply_to_user("REALMizkif", "Mizkif")
