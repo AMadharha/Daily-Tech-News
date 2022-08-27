@@ -27,4 +27,7 @@ def reply_to_user(user, subreddit):
     api.create_favorite(status[0].id) 
 
 reply_to_user("elonmusk", "teslamotors")
-reply_to_user("REALMizkif", "Mizkif")
+reply_to_user("MKBHD", "mkbhd")
+reply_to_user("neiltyson", "space")
+reply_to_user("LinusTech", "LinusTechTips")
+reply_to_user("NASAEarth", "EarthPorn")
