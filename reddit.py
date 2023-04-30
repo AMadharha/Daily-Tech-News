@@ -3,11 +3,11 @@ import praw
 import os
 
 # REDDIT KEYS
-CLIENT_ID = os.environ.get('CLIENT_ID')
-CLIENT_SECRET = os.environ.get('CLIENT_SECRET')
-USER_AGENT = os.environ.get('USER_AGENT')
-USERNAME = os.environ.get('USERNAME')
-PASSWORD = os.environ.get('PASSWORD')
+CLIENT_ID = os.getenv('CLIENT_ID')
+CLIENT_SECRET = os.getenv('CLIENT_SECRET')
+USER_AGENT = os.getenv('USER_AGENT')
+USERNAME = os.getenv('USERNAME')
+PASSWORD = os.getenv('PASSWORD')
 
 class RedditWrapper:
     def __init__(self):

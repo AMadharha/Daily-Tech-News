@@ -3,7 +3,7 @@ import openai
 import os
 
 # OPEN AI KEYS
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 class ChatGPT:
     def __init__(self):
