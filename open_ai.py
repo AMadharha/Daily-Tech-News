@@ -28,7 +28,7 @@ class ChatGPT:
                 {"role": "user", "content": prompt}
             ],
             temperature=0.5,
-            max_tokens=45        
+            max_tokens=55        
         )
 
         return completion.choices[0].message.content
