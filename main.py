@@ -4,6 +4,8 @@ from reddit import RedditWrapper
 from open_ai import ChatGPT
 import time
 from newspaper import Article
+from newspaper import ArticleException
+from tweepy import Forbidden
 
 # Instantiate modules
 twitter_wrapper = TwitterWrapper()
@@ -20,17 +22,20 @@ twitter_wrapper.tweet(tweet_content)
 
 time.sleep(5)
 
-# Build the reply (summary) using ChatGPT
-article = Article(article_url)
-article.download()
-article.parse()
+try:
+    # Build the reply (summary) using ChatGPT
+    article = Article(article_url)
+    article.download()
+    article.parse()
 
-prompt = f'Summaraize the following article for a tweet, be VERY concise: {article.text}'
-reply_content = 'TLDR:\n' + chatgpt.get_response(prompt)
+    prompt = f'Summaraize the following article for a tweet, be VERY concise: {article.text}'
+    reply_content = 'TLDR:\n' + chatgpt.get_response(prompt)
 
-last_period_index = reply_content.rfind(".")
-if last_period_index != -1:
-    reply_content = reply_content[:last_period_index+1]
+    last_period_index = reply_content.rfind(".")
+    if last_period_index != -1:
+        reply_content = reply_content[:last_period_index+1]
+except (newspaper.article.ArticleException, tweepy.errors.Forbidden):
+    reply_content = "Follow for more tech news!"
 
 # Reply to the tweet
 twitter_wrapper.reply_to_recent(reply_content)
