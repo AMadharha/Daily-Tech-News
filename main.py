@@ -4,8 +4,6 @@ from reddit import RedditWrapper
 from open_ai import ChatGPT
 import time
 from newspaper import Article
-from newspaper import ArticleException
-from tweepy import Forbidden
 
 # Instantiate modules
 twitter_wrapper = TwitterWrapper()
@@ -34,7 +32,7 @@ try:
     last_period_index = reply_content.rfind(".")
     if last_period_index != -1:
         reply_content = reply_content[:last_period_index+1]
-except (newspaper.article.ArticleException, tweepy.errors.Forbidden):
+except Exception:
     reply_content = "Follow for more tech news!"
 
 # Reply to the tweet
