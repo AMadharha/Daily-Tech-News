@@ -21,6 +21,10 @@ twitter_wrapper.tweet(tweet_content)
 ```
 It tweets out the top article of today from the subreddit [r/technews](www.reddit.com/r/technology). The bot tweets at 6:30 AM EST everyday, and since the time filter is by `day`, duplicates are not a problem.
 
+Here is an example of a tweet by the bot:
+
+![tweet image](https://raw.githubusercontent.com/AMadharha/Daily-Tech-News/main/samples/tweet.png "tweet image")
+
 ## Replies:
 ```py
 # Build the reply (summary) using ChatGPT
@@ -34,7 +38,11 @@ reply_content = 'TLDR:\n' + chatgpt.get_response(prompt)
 # Reply to the tweet
 twitter_wrapper.reply_to_recent(reply_content)
 ```
-The bot uses ChatGPT to create a summary of the article, with the max tokens being set to 50 to ensure the reply tweet content does not exceed to tweet character limit.
+The bot uses ChatGPT to create a summary of the article, with the max tokens being set to 55 to ensure the reply tweet content does not exceed to tweet character limit. 
+
+Here is an example of a reply by the bot (to the tweet above):
+
+![reply image](https://raw.githubusercontent.com/AMadharha/Daily-Tech-News/main/samples/reply.png "reply image")
 
 # Project Specifications
 * This project was created and tested using [Python version 3.11.3](https://www.python.org/downloads/).
